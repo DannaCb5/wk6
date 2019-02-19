@@ -1,0 +1,140 @@
+php time date stamp
+
+php include: 
+    statement takes all the text/code/markup that exists in the specified file and copies it into the file that uses the include statement.
+    Includeing files is very useful when you want to include the same PHP, HTML, or text on multiple pages of a website.
+
+php filters: 
+    see list in w3schools.  Many different filters. Use filters to sanitize user inputs.
+    Examples:
+        filter_var(): Validate and Interger.  Blacklist certain characters, letter combinations.
+        
+php cookies: 
+    how many times you visited, have you registered, queried information, what you looked at etc.
+    Example:
+        $cookie_name = "user";
+        $cookie_value = "John Doe";
+        setcookie($cookie_name, $cookie_value, time() + (864 * 30), "/"); /* sets 30 days in the future */
+
+        if (isset($_COOKIE[$cookie_name])) {
+            echo "Cookie name '" . @cookie_name ."' is set!<br>";
+            echo "Value is: " . $_COOKIE[$cookie_name]; 
+        } 
+
+php session "tokens". Don't worry about tokens: 
+    An array to pass information from one page to another.
+    more secure than cookies.  
+    They live on the server. 
+    Once you leave the session, the site ends.
+
+    must put: <?php session_start(); at the top of every page.
+    <?php session_start();?>
+    <?php// Set session variables
+    $_SESSION["favcolor"] = "green";
+    $_SESSION["favanimal"] = "cat";
+    echo "Session variables are set.";
+    <?
+    <?php 
+    session_unset();
+    session_destroy();
+    <?
+
+PDO and SQL
+
+Database:
+    Language for accessing Data.
+    Persistance: saved for access later.
+    Relational Database: SQL very structured
+    Non-relation Db: look like arrays.  Don't scale.
+
+MySQL - sends querys to a database. It is a Relational Database             Management System (RDBM).
+PHPMyAdmin - Graphical User Interface (GUI).  Set up tables and database.
+    Database -> Table -> Row or Record -> Column or Field
+    Structure Tab - 
+
+
+Assignment1 Goals:
+    Includes
+    - Filter_var()
+    - Set cookie_name
+    - Create 3 files (named: form, welcome, header)
+    - In form
+        1. Create form
+        2. Include header
+        3. Validate input
+    - In header
+        1. Create 2 anchors
+            - Create Set cookie function
+    - In welcome
+        1.  If user input is string you want 
+                echo sucess
+            else
+                echo  failure
+    - In form  
+        1. If used input is valid, include welcome.
+    - Look for Cookie
+        Got to Inspect, Chrome, applications, cookies or 
+        In browser settings: content, settings, cookies.
+
+Assignment Due Friday:
+    CRUD - Create, Read, Update, Delete
+    Incorporate cookies and session_start
+    Create database
+    Budget - Id, Bill Name
+    Recipie - Id, Recipie Name
+    Form to create Record
+    Form to edit a Record
+    Print the database
+
+PDO - learn from w3schools.com then phpdelusions.net
+    PDO - Works with any database.
+    MySqli - Works with SQL only.
+
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=myDB", $usernamen, $password)
+        // set the PDO error mode to exception  DO NOT DO THIS PARTS
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRORMODE_EXCEPTION);
+        echo "Connected successfully";
+    }
+    catch(PDOException $e)
+    {
+        echo "Connection failed: " . $e->getMessage();
+    }
+    }
+
+
+
+
+Definitions:
+
+if(!empty($POST) && isset($_POST["user"])) {}
+    
+    !empty() - checks to see if variable is not empty.
+    
+    $POST - used with forms.  creates and array of form inputs. This is a superglobal, which is always acceptable from anywhere in the program regardless of function, class or file. Unlike $GET, the POST method is invisible to others, and you can't bookmark the page.
+
+    && - and
+
+    isset - (variable, varible2 ....)
+        variable1 - variable being checked, required, type mixed.
+        variable2 - more variable to be checked, optional, type mixed.
+        mixed - multiple, but not necessarily all types.
+        True if (variable1,variable2..) exists and has value not equal to NULL, FALSE otherwise. Boolean
+
+    $user_input = $_POST["user"];
+
+        $user_input = variable used to hold the users input: $_POST["user"]
+    
+    if(filter_var($user_imput, FILTER_VALIDATE_EMAIL)) {}
+
+        filter_var - filters a variable with a specified filter.  filter_var(variable, filter).
+        FILTER_VALIDATE_EMAIL - validates value as an email address.
+
+    setCookie("user", "", time() + (86400 * 1), "/");
+        
+        setCookies(name, value, expire, path, domain, secure, httponly)
+            name, string - Name of the cookie
+            value, string - Value of the cookie, stored in clients computer.
+            expire, Integer - Unix timestamp, i.e. number of second since January 1st,       1970 (called as Unix Epoch). Integer
+            path, String - Server path in which the cookie will be available. 
+
