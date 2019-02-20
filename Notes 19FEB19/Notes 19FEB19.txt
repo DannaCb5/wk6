@@ -133,8 +133,12 @@ if(!empty($POST) && isset($_POST["user"])) {}
     setCookie("user", "", time() + (86400 * 1), "/");
         
         setCookies(name, value, expire, path, domain, secure, httponly)
-            name, string - Name of the cookie
-            value, string - Value of the cookie, stored in clients computer.
-            expire, Integer - Unix timestamp, i.e. number of second since January 1st,       1970 (called as Unix Epoch). Integer
-            path, String - Server path in which the cookie will be available. 
+            - name, string, Required - Name of the cookie.
+            - value, string, Optional - Value of the cookie, stored in clients computer.
+            - expire, Integer, Optional - Unix timestamp, i.e. number of second since January 1st, 1970 (called as Unix Epoch). Integer
+            - path, String, Optional - Server path in which the cookie will be available.
+            - domain, Optional - Domain name of cookie to make available to example.com for all subdomains of example.com and www.example.com for only subdomain of www.example.com. 
+            - secure, Optional - True for HTTPS (if it exists), default for false.
+            - httponly, Optional - True uses HTTP proticol only, not scripting languages. Default is false.  Helps prevent identity theft. 
+
 

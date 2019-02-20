@@ -1,0 +1,8 @@
+SQL Injection
+    Prepare:
+        "INESRT INTO MyGuests (firstname, lastname, email) VALUES (?,?,?)"
+        VALUES(:firstname, :lastname, :email)");
+        $stmt->bindParam(':firstname', $firstname); )
+        $stmt->bindParam('...', $...)
+
+
