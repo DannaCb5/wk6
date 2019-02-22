@@ -1,0 +1,56 @@
+// Create form:
+
+ <FORM action=''  method='post'>
+    <INPUT type="text" name="task">
+    <INPUT type="submit" value="Push")    
+ </FORM>
+
+// Echo out value of user input:
+
+ If(!empty($_POST['task']) && isset($_POST['task'])) {
+    echo $_POST['task'];
+// Validate task
+    $task = $_POST['task'];
+    $task = time($task);
+    $task = htmlspecialchars($task);
+    $task = stripslashes($task);
+// Or: This should do the same thing
+    //function validateTask($task) {
+    // $task = trim(htmlspecialcars(stripslashes($task)));
+    // return $task;
+    // }
+    }
+
+// Connect to the database 
+
+$server = "localhost";
+$password = "";
+$user = "root"
+$dbname = "task"
+
+  try(
+    $pdo = new PDO("mysql:host = $server; dbname=$dbname, $user, $password);
+    $pdo -> setAttibute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "connect successfully";
+  catch(PDOExecption $e) {
+      echo "Error is: ".$e->getmessage();
+  }
+
+// Step 1: Insert into database 
+// Step 2: Put it into a function
+
+Cause: function newTask() {
+Cause: $sql = "INSERT INTO table (task) VALUES ('task');
+    $pdo -> exec($sql); 
+    $lastid = $pdo -> lastInsertId(); 
+    echo "New record created" . $lastid;
+  }
+
+// Step 3: Fix Error caused by adding a function
+
+fix: function newTask($task) 
+fix: $sql = "INSERT INTO table (task) VALUES ('$task');
+    $pdo -> exec($sql); 
+    $lastid = $pdo -> lastInsertId(); 
+    echo "New record created" . $lastid;
+  }
